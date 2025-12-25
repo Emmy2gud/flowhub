@@ -1,0 +1,40 @@
+import React, { useState } from 'react';
+
+import { Outlet, Link } from 'react-router-dom';
+
+
+
+import { Gift, type LucideIcon } from 'lucide-react';
+
+// import { Header } from '../dashboard/Header';
+
+
+
+import Header from '../common/Header';
+import Sidebar from '../common/Sidebar';
+
+
+export default function DashboardLayout() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  return (
+    <div className="flex h-screen bg-gray-50 overflow-hidden">
+      
+      <Sidebar
+        isOpen={sidebarOpen} 
+        onClose={() => setSidebarOpen(false)} 
+      />
+
+      {/* Main Content Area */}
+      <div className="flex-1 flex flex-col overflow-hidden">
+      
+        <Header onMenuClick={() => setSidebarOpen(true)} />
+
+        {/* Page Content */}
+        <main className="flex-1 overflow-y-auto p-4 lg:p-6">
+    <Outlet/>
+        </main>
+      </div>
+    </div>
+  );
+}
