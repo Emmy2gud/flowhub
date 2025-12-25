@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+  import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 
 
@@ -16,20 +16,30 @@ function App() {
   return (
 
 
-      <BrowserRouter>
-        <div className="App">
-          <Routes>
-       
-            <Route path="/login" element={<LoginForm />} />
-            <Route path="/signup" element={<SignupForm />} />
-            
-            {/* Dashboard routes inside DashboardLayout */}
-            <Route path="/dashboard" element={<DashBoardLayout /> }>
-              <Route index element={user?<DashBoard />:<SignupForm />} />
-            </Route>
-          </Routes>
-        </div>
-      </BrowserRouter>
+
+
+<BrowserRouter>
+  <div className="App">
+    <Routes>
+
+      {/* Redirect root "/" to signup */}
+      <Route path="/" element={<Navigate to="/signup" replace />} />
+
+      <Route path="/login" element={<LoginForm />} />
+      <Route path="/signup" element={<SignupForm />} />
+
+      {/* Dashboard routes */}
+      <Route path="/dashboard" element={<DashBoardLayout />}>
+        <Route
+          index
+          element={user ? <DashBoard /> : <Navigate to="/signup" replace />}
+        />
+      </Route>
+
+    </Routes>
+  </div>
+</BrowserRouter>
+
 
     
 
