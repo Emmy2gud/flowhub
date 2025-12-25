@@ -168,7 +168,7 @@ function DashBoard() {
   const [copied, setCopied] = useState(false);
   const referralLink = 'https://app.flowahub.com/signup?ref=emma3679';
 const [profile, setProfile] = useState<Profile | null>(null)
-const [loading, setLoading] = useState<boolean>(true)
+const [, setLoading] = useState<boolean>(true)
 const [claimedToday, setClaimedToday] = useState(false)
 
 useEffect(() => {

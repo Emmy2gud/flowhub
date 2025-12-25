@@ -24,10 +24,12 @@ export default function AppProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
        supabase.auth.getUser().then(({ data }) => {
       setUser(data.user);
+      setLoading(false);
     });
     const { data: listener } = supabase.auth.onAuthStateChange(
       (_event, session) => {
         setUser(session?.user ?? null);
+        setLoading(false);
       }
     );
 
