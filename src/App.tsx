@@ -1,5 +1,5 @@
 
-  import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+  import { BrowserRouter, Routes, Route} from "react-router-dom";
 import "./App.css";
 
 
@@ -9,6 +9,7 @@ import LoginForm from "./pages/auth/LoginForm";
 import SignupForm from "./pages/auth/SignupForm";
 import { AppContext } from "./Context/AppContext";
 import { useContext } from "react";
+import Home from "./pages/Home";
 
 
 function App() {
@@ -18,26 +19,27 @@ function App() {
 
 
 
-  <BrowserRouter>
-      <Routes>
+<BrowserRouter>
+  <div className="App">
+    <Routes>
+
+     
+      <Route path="/" element={<Home/>} />
+
+      <Route path="/login" element={<LoginForm />} />
+      <Route path="/signup" element={<SignupForm />} />
+
+      {/* Dashboard routes */}
+      <Route path="/dashboard" element={<DashBoardLayout />}>
         <Route
-          path="/"
-          element={
-            user ? <Navigate to="/dashboard" replace /> : <Navigate to="/signup" replace />
-          }
+          index
+          element={user ? <DashBoard /> : <SignupForm />}
         />
+      </Route>
 
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/signup" element={<SignupForm />} />
-
-        <Route path="/dashboard" element={<DashBoardLayout />}>
-          <Route
-            index
-            element={user ? <DashBoard /> : <Navigate to="/login" replace />}
-          />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    </Routes>
+  </div>
+</BrowserRouter>
 
 
     
