@@ -18,27 +18,26 @@ function App() {
 
 
 
-<BrowserRouter>
-  <div className="App">
-    <Routes>
-
-      {/* Redirect root "/" to signup */}
-      <Route path="/" element={<Navigate to="/signup" replace />} />
-
-      <Route path="/login" element={<LoginForm />} />
-      <Route path="/signup" element={<SignupForm />} />
-
-      {/* Dashboard routes */}
-      <Route path="/dashboard" element={<DashBoardLayout />}>
+  <BrowserRouter>
+      <Routes>
         <Route
-          index
-          element={user ? <DashBoard /> : <Navigate to="/signup" replace />}
+          path="/"
+          element={
+            user ? <Navigate to="/dashboard" replace /> : <Navigate to="/signup" replace />
+          }
         />
-      </Route>
 
-    </Routes>
-  </div>
-</BrowserRouter>
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/signup" element={<SignupForm />} />
+
+        <Route path="/dashboard" element={<DashBoardLayout />}>
+          <Route
+            index
+            element={user ? <DashBoard /> : <Navigate to="/login" replace />}
+          />
+        </Route>
+      </Routes>
+    </BrowserRouter>
 
 
     
