@@ -5,7 +5,9 @@ import {  Bell,  Menu } from "lucide-react";
 
 
 
-export const Header = ({ onMenuClick }) => {
+export const Header = ({ onMenuClick}:{
+  onMenuClick: () => void;
+}) => {
 
 
   return (

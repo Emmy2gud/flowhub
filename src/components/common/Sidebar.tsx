@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Home, Compass,  Layers, Gift, X, PackageOpen, CreditCard,  UserRoundCog, Gem } from 'lucide-react';
+import { Home, Compass,  Layers,  X, PackageOpen, CreditCard,  UserRoundCog, Gem } from 'lucide-react';
 import { AppContext } from "../../Context/AppContext";
 import { useContext } from "react"
 import Logo from '@/assets/flowva_icon.png';
