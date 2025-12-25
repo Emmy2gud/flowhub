@@ -4,12 +4,6 @@ import { Outlet} from 'react-router-dom';
 
 
 
-import { Gift, type LucideIcon } from 'lucide-react';
-
-// import { Header } from '../dashboard/Header';
-
-
-
 import Header from '../common/Header';
 import Sidebar from '../common/Sidebar';
 
