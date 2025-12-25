@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import  supabase  from "../../lib/supabase-client";
 import { useEffect } from 'react'
 import {
@@ -157,12 +157,18 @@ const socialLinks: Link[] = [
     url: 'https://www.linkedin.com/',
   },
 ];
+interface Profile {
+  id: string
+  points: number
+  daily_streak: number
+  last_daily_claim: string | null
+}
 
 function DashBoard() {
   const [copied, setCopied] = useState(false);
   const referralLink = 'https://app.flowahub.com/signup?ref=emma3679';
-const [profile, setProfile] = useState<any>(null)
-const [loading, setLoading] = useState(true)
+const [profile, setProfile] = useState<Profile | null>(null)
+const [loading, setLoading] = useState<boolean>(true)
 const [claimedToday, setClaimedToday] = useState(false)
 
 useEffect(() => {
@@ -174,7 +180,7 @@ useEffect(() => {
     if (!user) return
 
     // Try to fetch profile
-    let { data: profile, error } = await supabase
+    let { data: profile} = await supabase
       .from('profiles')
       .select('*')
       .eq('id', user.id)

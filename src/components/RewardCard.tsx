@@ -1,7 +1,15 @@
 import { RewardIcon } from "./RewardIcon";
 
 
-export default function RewardCard({ reward }) {
+export default function RewardCard({ reward }: { reward: {
+   id: number;
+  title: string;
+  description: string;
+  points: number;
+  status: string;
+  icon: string;
+
+} }) {
   const isComingSoon = reward.status === "coming-soon";
 
   return (
